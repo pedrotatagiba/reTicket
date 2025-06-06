@@ -8,11 +8,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title> ReTicket </title>
-    <link rel="stylesheet" >
-    
+    <link rel="stylesheet" href="{% static 'reTicket/css/estilo.css' %}">
 </head>
 
 <body>
-   <h1> reTicket </h1>
+        <h1> reTicket </h1>
+   </div>
+        <form action="{% url 'segunda' %}">
+            &nbsp;<input type='submit' value='Outra página...'>
+        </form>
 </body>
 </html>
