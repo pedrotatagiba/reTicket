@@ -1,0 +1,26 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> ReTicket </title>
+    <link rel="stylesheet" href="{% static 'reTicket/css/estilo.css' %}">
+</head>
+
+<body>
+    <h1>Página Inicial</h1>
+    <form action="{% url 'anuncie' %}">
+            &nbsp;<input type='submit' value='Anuncie seu ingresso'>
+        </form>
+    <form action="{% url 'ingressos' %}">
+            &nbsp;<input type='submit' value='Seus ingressos'>
+        </form>
+    <form action="{% url 'eventos' %}">
+            &nbsp;<input type='submit' value='Pesquise eventos'>
+        </form>
+</body>
+</html>
