@@ -23,3 +23,6 @@ def seusIngressos(request):
 
 def pesquiseEventos(request):
     return render(request, 'reTicket/pesquiseEventos.html')
+
+def acessaIngressos(request):
+    return render(request, 'ingressos/ingressos.html')
