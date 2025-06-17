@@ -1,5 +1,9 @@
 from django.shortcuts import render
 
+from django.contrib.auth.decorators import login_required
+
+@login_required
+                
 # Create your views here.
 
 def home(request):
@@ -8,9 +12,6 @@ def home(request):
 
 def login(request):
     return render(request, 'reTicket/login.html')
-
-def crieSuaConta(request):
-    return render(request, 'reTicket/conta.html')
 
 def paginaInicial(request):
     return render(request, 'reTicket/inicial.html')

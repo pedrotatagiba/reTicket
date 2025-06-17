@@ -18,18 +18,19 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from reTicket import views
+from django.urls.conf import include
 
 urlpatterns = [
     
     path("admin/", admin.site.urls),
     path('', views.home, name='home'),
     path('login/',views.login, name='login'),
-    path('conta/',views.crieSuaConta, name='conta'),
     path('inicial/',views.paginaInicial, name='inicial'),
     path('anuncie_seu_ingresso/',views.anuncieSeuIngresso, name='anuncie'),
     path('seus_ingressos/',views.seusIngressos, name='ingressos'),
     path('eventos/',views.pesquiseEventos, name='eventos'),
     path('ingressos/',views.acessaIngressos , name='acessaIngressos'),
+    path('accounts/', include('django.contrib.auth.urls')),
 
 ]
 
