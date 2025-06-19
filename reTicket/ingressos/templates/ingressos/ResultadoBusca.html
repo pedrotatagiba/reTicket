@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Resultado da Busca</title>
+    <link rel="stylesheet" href="{% static 'reTicket/css/estilo.css' %}">
+</head>
+<body>
+    <h1>Resultado da Busca</h1>
+
+    <table border="1">
+        <tr>
+            <th>Evento</th>
+            <th>Código</th>
+            <th>Data</th>
+            <th>Preço</th>
+        </tr>
+
+        {% for ingresso in resultados %}
+            <tr>
+                <td>{{ ingresso.evento }}</td>
+                <td>{{ ingresso.codigo }}</td>
+                <td>{{ ingresso.dtEvento }}</td>
+                <td>{{ ingresso.preco }}</td>
+            </tr>
+        {% empty %}
+            <tr>
+                <td colspan="4">Nenhum ingresso encontrado.</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <br>
+    <a href="{% url 'ingressos:busca-item' %}">Nova Busca</a>
+    <br><br>
+    <form action="{% url 'inicial' %}">
+        <input type="submit" value="Voltar para a página inicial">
+    </form>
+</body>
+</html>

@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Busca de Ingressos</title>
+    <link rel="stylesheet" href="{% static 'reTicket/css/estilo.css' %}">
+</head>
+<body>
+    <h1>Busca de Ingressos</h1>
+    <form action="{% url 'ingressos:resultado-busca' %}" method="get">
+        Evento: <input type="text" name="evento" required>
+        <button type="submit">Buscar</button>
+    </form>
+
+    <br>
+    <form action="{% url 'inicial' %}">
+        <input type="submit" value="Voltar para a página inicial">
+    </form>
+</body>
+</html>
