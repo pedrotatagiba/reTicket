@@ -1,10 +1,11 @@
-from django.urls import path
-from . import views
-
-app_name= 'reTicket'
+from django.urls.conf import path
+from ingressos import views
 
 
-urlptters = [
-    path('busca/', views.buscaItem, name='busca-item'),
-    path('retorno-busca/', views.resultadoBuscaItem, name='resultado-busca'),
+app_name = 'ingressos'
+
+
+urlpatterns = [
+  path('busca/', views.buscaUmIngresso, name='busca-ingresso'),
+  path('retorno-busca/', views.respostaBuscaUmIngresso, name='mostra-ingresso'),
 ]
