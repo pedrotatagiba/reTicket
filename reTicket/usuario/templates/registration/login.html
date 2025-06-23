@@ -7,11 +7,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title> ReTicket </title>
+    <title>Login</title>
     <link rel="stylesheet" href="{% static 'reTicket/css/estilo.css' %}">
 </head>
 
 <body>
-    <h1>Crie sua Conta</h1>
+    <h1>Login</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Login</button>
+    </form>
 </body>
 </html>

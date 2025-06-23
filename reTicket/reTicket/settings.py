@@ -39,7 +39,16 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "ingressos",
+    "usuario",
 ]
+
+CSRF_TRUSTED_ORIGINS = [
+   'https://localhost:8000',
+   'http://127.0.0.1:8000',
+]
+
+LOGIN_REDIRECT_URL = '/inicial/'
+LOGOUT_REDIRECT_URL = '/accounts/inicial/'
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
