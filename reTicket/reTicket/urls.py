@@ -29,9 +29,10 @@ urlpatterns = [
     path('anuncie_seu_ingresso/',views.anuncieSeuIngresso, name='anuncie'),
     path('seus_ingressos/',views.seusIngressos, name='ingressos'),
     path('eventos/',views.pesquiseEventos, name='eventos'),
-    path('ingressos/',views.acessaIngressos , name='acessaIngressos'),
+    path('acessaIngressos/',views.acessaIngressos , name='acessaIngressos'),
     path('accounts/', include('django.contrib.auth.urls')),
 
+    path('ingressos/',include('ingressos.urls'))
 ]
 
 

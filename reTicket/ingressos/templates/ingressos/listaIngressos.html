@@ -26,13 +26,13 @@
             </tr>
         {% empty %}
             <tr>
-                <td colspan="4">Nenhum ingresso encontrado.</td>
+                <td colspan="4">Nenhum ingresso encontrado</td>
             </tr>
         {% endfor %}
     </table>
 
     <br>
-    <a href="{% url 'ingressos:busca-item' %}">Nova Busca</a>
+    <a href="{% url 'ingressos:busca-ingresso' %}">Nova Busca</a>
     <br><br>
     <form action="{% url 'inicial' %}">
         <input type="submit" value="Voltar para a página inicial">
