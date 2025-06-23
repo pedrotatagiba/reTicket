@@ -47,7 +47,7 @@ CSRF_TRUSTED_ORIGINS = [
    'http://127.0.0.1:8000',
 ]
 
-LOGIN_REDIRECT_URL = '/reTicket/home/'
+LOGIN_REDIRECT_URL = '/inicial/'
 LOGOUT_REDIRECT_URL = '/accounts/inicial/'
 
 MIDDLEWARE = [
