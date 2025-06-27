@@ -16,4 +16,4 @@ class IngressoListView(View):
  def get(self, request, *args, **kwargs):
   ingressos = Ingresso.objects.all()
   contexto = { 'ingressos': ingressos, }
-  return render(request, 'contatos/listaIngressos.html', contexto)
+  return render(request, 'ingressos/listaIngressos.html', contexto)

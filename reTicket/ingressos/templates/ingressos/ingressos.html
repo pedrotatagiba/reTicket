@@ -23,7 +23,7 @@
 <ul>
   {% for ingresso in ingressos %}
     <li>
-      {{ ingresso.nome }} - 
+      {{ ingresso.evento }} - 
       <a href="{% url 'ingressos:editar' pk=ingresso.id %}">Editar</a>
     </li>
   {% endfor %}
