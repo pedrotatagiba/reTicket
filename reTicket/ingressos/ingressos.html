@@ -1,9 +1,0 @@
-<h1>Ingressos</h1>
-<ul>
-  {% for ingresso in ingressos %}
-    <li>
-      {{ ingresso.nome }} - 
-      <a href="{% url 'ingressos:editar' pk=ingresso.id %}">Editar</a>
-    </li>
-  {% endfor %}
-</ul>
