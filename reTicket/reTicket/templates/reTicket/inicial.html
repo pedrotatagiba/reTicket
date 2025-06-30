@@ -8,31 +8,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title> ReTicket </title>
-    <link rel="stylesheet" href="{% static 'reTicket/css/estilo.css' %}">
-</head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    </head>
 
 <body>
-    <h1>Página Inicial</h1>
-    <form action="{% url 'anuncie' %}">
-            &nbsp;<input type='submit' value='Anuncie seu ingresso'>
-        </form>
-        
-    <form action="{% url 'meus-ingressos-do-projeto' %}">
-            &nbsp;<input type='submit' value='Seus ingressos'>
-        </form>
+    <nav class="navbar navbar-expand-md bg-dark sticky-top border-bottom" data-bs-theme="dark">
+        <div class="container">
+            <a class="navbar-brand d-md-none" href="#">
+                <svg class="bi" width="24" height="24" aria-hidden="true">
+                    <use xlink:href="#aperture"></use>
+                </svg>
+                Aperture
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" aria-controls="offcanvas" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasLabel">Aperture</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav flex-grow-1 justify-content-between">
+                        <li class="nav-item"><a class="" href="" aria-label="Aperture"> <svg class="bi" width="24" height="24" aria-hidden="true"><use xlink:href="#aperture"></use></svg> </a></li>
+                        <li class="nav-item"><a class="nav-link text-primary-emphasis" href="{% url 'anuncie' %}">Anuncie</a></li>
+                        <li class="nav-item text-primary-emphasis"><a class="nav-link text-primary-emphasis" href="{% url 'meus-ingressos-do-projeto' %}">Meus Ingressos</a></li>
+                        <li class="nav-item"><a class="nav-link text-primary-emphasis" href="{% url 'eventos' %}">Pesquise Eventos</a></li>
+                        <li class="nav-item"><a class="nav-link text-primary-emphasis" href="https://www.instagram.com/joao.luiscastro/">Instagram</a></li>
 
-    <form action="{% url 'eventos' %}">
-            &nbsp;<input type='submit' value='Pesquise eventos'>
-        </form>
+                        {# --- AQUI ESTÁ A MUDANÇA PARA O BOTÃO SAIR NA NAVBAR --- #}
+                        <li class="nav-item text-primary-emphasis">
+                            <form action="{% url 'logout' %}" method="post" class="d-inline"> {# Adicione d-inline para manter o estilo de link na navbar #}
+                                {% csrf_token %}
+                                <button type="submit" class="nav-link btn btn-link text-primary-emphasis" style="background: none; border: none; padding: .5rem 1rem; cursor: pointer;">Sair</button>
+                            </form>
+                        </li>
+                        {# --- FIM DA MUDANÇA --- #}
 
-     <form action='https://www.instagram.com/joao.luiscastro/'>
-            &nbsp;<input type='submit' value='INSTAGRAM'>
-        </form>
+                        <li class="nav-item text-primary-emphasis"><a class="nav-link" href="#" aria-label="Cart"> <svg class="bi" width="24" height="24" aria-hidden="true"><use xlink:href="#cart"></use></svg> </a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
 
-    {# Adicione este formulário para o botão de Sair (Logout) #}
-    <form action="{% url 'logout' %}" method="post">
-        {% csrf_token %} {# É importante incluir o token CSRF para formulários POST #}
-        &nbsp;<input type='submit' value='Sair'>
-    </form>
+    <h1 class="text-center bold fs-1 p-2">     </h1>
+
+    <div class="text-center p-2">
+        <img src="https://lh7-rt.googleusercontent.com/slidesz/AGV_vUcmqAzdZaDznZXAldDxy7Cqpw0XjQSockzwKdx7XK74xQTnZib0d7B1QnyNAtmN69SC9tnQzSTVaknyhm9ThHkJfSV8vIpZi2q5_BlTeu2OIw0DVYdJvd4sa9SvNcupq5OeDr6P3A=w320-h320?key=D4Yt7mty8KaYiSL1FWknluRw" class="img-fluid" alt="">
+    </div>
+
 </body>
 </html>

@@ -5,16 +5,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Busca um ingresso</title>
-    <link rel="stylesheet" href="{% static 'reTicket/css/estilo.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
 </head>
-<body>
+<body class="text-primary-emphasis text-center">
    <h1>Busca de ingressos</h1>
    <form action="{% url 'ingressos:mostra-ingresso' %}" method="get">
        Nome: <input type="text" name="nome" id="nome">
        <button type="submit">Busca</button>
    </form>
-   <form action="{% url 'inicial' %}">
-            &nbsp;<input type='submit' value='Volte para a página inicial'>
+   <form class="p-2" action="{% url 'inicial' %}">
+            <input type='submit' value='Página inicial'>
         </form>
 </body>
 </html>
