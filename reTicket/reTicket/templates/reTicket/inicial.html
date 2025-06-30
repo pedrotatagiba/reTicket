@@ -13,11 +13,11 @@
 
 <body>
     <h1>Página Inicial</h1>
-    <form action="{% url 'anuncie' %}"> {# Use o nome da URL que você definiu no reTicket.urls #}
+    <form action="{% url 'anuncie' %}">
             &nbsp;<input type='submit' value='Anuncie seu ingresso'>
         </form>
         
-    <form action="{% url 'meus-ingressos-do-projeto' %}"> {# Use o nome da URL que você definiu no reTicket.urls #}
+    <form action="{% url 'meus-ingressos-do-projeto' %}">
             &nbsp;<input type='submit' value='Seus ingressos'>
         </form>
 
@@ -28,5 +28,11 @@
      <form action='https://www.instagram.com/joao.luiscastro/'>
             &nbsp;<input type='submit' value='INSTAGRAM'>
         </form>
+
+    {# Adicione este formulário para o botão de Sair (Logout) #}
+    <form action="{% url 'logout' %}" method="post">
+        {% csrf_token %} {# É importante incluir o token CSRF para formulários POST #}
+        &nbsp;<input type='submit' value='Sair'>
+    </form>
 </body>
 </html>

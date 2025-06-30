@@ -48,7 +48,10 @@ CSRF_TRUSTED_ORIGINS = [
 ]
 
 LOGIN_REDIRECT_URL = '/inicial/'
-LOGOUT_REDIRECT_URL = '/accounts/inicial/'
+
+# Redireciona para a página de login após o logout (já corrigido)
+LOGOUT_REDIRECT_URL = '/accounts/login/' # Ou 'login' para usar o nome da URL
+
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -66,7 +69,7 @@ TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
         "DIRS": [os.path.join(BASE_DIR, 'reTicket/templates')],
-        "APP_DIRS": True,
+        "APP_DIRS": True, # Esta linha é importante!
         "OPTIONS": {
             "context_processors": [
                 "django.template.context_processors.request",

@@ -8,19 +8,15 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("", views.home, name="root"),
     path("home/", views.home, name="home"),
-    path("login/", views.login, name="login"),
+    # REMOVA OU COMENTE ESTA LINHA: path("login/", views.login, name="login"),
     path("inicial/", views.paginaInicial, name="inicial"),
 
-    # --- Ajustes nas URLs de Anunciar e Meus Ingressos ---
-    # Aponte 'anuncie_seu_ingresso/' diretamente para a view de criação de ingresso
     path("anuncie_seu_ingresso/", ingressos_views.criarIngresso, name="anuncie"),
-    # Aponte 'seus_ingressos/' diretamente para a view de listagem dos ingressos do usuário
-    path("seus_ingressos/", ingressos_views.MeusIngressosListView.as_view(), name="meus-ingressos-do-projeto"), # Dê um nome diferente para evitar conflito com 'ingressos'
-                                                                                                                   # ou remova o 'name="ingressos"' anterior se não for mais usado
-    # --- Mantenha esta linha para incluir as outras URLs do app ingressos (lista, busca, atualiza)
+    path("seus_ingressos/", ingressos_views.MeusIngressosListView.as_view(), name="meus-ingressos-do-projeto"),
     path('ingressos/', include('ingressos.urls')),
 
     path("eventos/", views.pesquiseEventos, name="eventos"),
     path("acessaIngressos/", views.acessaIngressos, name="acessaIngressos"),
+    # Mantenha esta linha, pois ela inclui todas as URLs de autenticação do Django, incluindo o login correto:
     path("accounts/", include('django.contrib.auth.urls')),
 ]

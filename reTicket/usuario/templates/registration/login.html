@@ -7,16 +7,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Login</title>
+    <title> ReTicket - Login </title>
     <link rel="stylesheet" href="{% static 'reTicket/css/estilo.css' %}">
 </head>
 
 <body>
-    <h1>Login</h1>
-    <form method="post">
+    <h1>Faça seu Login</h1>
+
+    <form method="post" action="{% url 'login' %}">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Login</button>
+        <button type="submit">Entrar</button>
     </form>
+
+    <p>Não tem uma conta? <a href="{% url 'admin:auth_user_add' %}">Crie uma aqui</a> (temporário para testes)</p>
+
+    <form action="{% url 'inicial' %}">
+            &nbsp;<input type='submit' value='Página inicial'>
+        </form>
 </body>
 </html>
