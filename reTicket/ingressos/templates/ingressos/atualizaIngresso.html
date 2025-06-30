@@ -1,0 +1,28 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<title>Atualiza Ingresso</title>
+<link rel="stylesheet" href="{% static 'reTicket/css/estilo.css' %}">
+</head>
+
+<body>
+    <h1>Atualização de ingressos</h1>
+    <form method="POST" class='formulario'>
+      {% csrf_token %}
+      <table>
+        {{ evento.as_table }}
+          <tr>
+            <td></td>
+            <td><input type="submit" value="Atualiza"></td>
+          </tr>
+      </table>
+    </form>
+    <form action="{% url 'inicial' %}">
+            &nbsp;<input type='submit' value='Volte para a página inicial'>
+        </form>
+  </body>
+  </html>

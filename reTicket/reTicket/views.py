@@ -20,10 +20,10 @@ def anuncieSeuIngresso(request):
     return render(request, 'reTicket/anuncieSeuIngresso.html')
 
 def seusIngressos(request):
-    return render(request, 'reTicket/seusIngressos.html')
+    return render(request, 'ingressos/listaIngressos.html')
 
 def pesquiseEventos(request):
-    return render(request, 'reTicket/pesquiseEventos.html')
+    return render(request, 'ingressos/buscaUmIngresso.html')
 
 def acessaIngressos(request):
     return render(request, 'ingressos/ingressos.html')

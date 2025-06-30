@@ -110,15 +110,17 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-# Internationalization
-# https://docs.djangoproject.com/en/5.2/topics/i18n/
+# Date and time format settings
+DATE_FORMAT = 'd/m/Y'  # Displays as 29/05/2025
+SHORT_DATE_FORMAT = 'd/m/Y'
+DATE_INPUT_FORMATS = ['%d/%m/%Y', '%Y-%m-%d']  # Allows input as dd/mm/yyyy or yyyy-mm-dd
 
-LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = "UTC"
-
+# settings.py
+LANGUAGE_CODE = 'pt-br'
+TIME_ZONE = 'America/Sao_Paulo'
 USE_I18N = True
-
+USE_L10N = True  # Pode ativar se quiser localização completa
 USE_TZ = True
 
 

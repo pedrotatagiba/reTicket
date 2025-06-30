@@ -1,17 +1,20 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Busca um ingresso</title>
-   <link rel="stylesheet" href="{% static 'reTicket/css/estilo.css' %}">
+    <meta charset="UTF-8">
+    <title>Busca um ingresso</title>
+    <link rel="stylesheet" href="{% static 'reTicket/css/estilo.css' %}">
 </head>
 <body>
    <h1>Busca de ingressos</h1>
    <form action="{% url 'ingressos:mostra-ingresso' %}" method="get">
-       Evento: <input type="text" name="evento" id="evento">
+       Nome: <input type="text" name="nome" id="nome">
        <button type="submit">Busca</button>
    </form>
+   <form action="{% url 'inicial' %}">
+            &nbsp;<input type='submit' value='Volte para a página inicial'>
+        </form>
 </body>
 </html>

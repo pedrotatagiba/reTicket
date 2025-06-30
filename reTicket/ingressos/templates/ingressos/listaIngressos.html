@@ -3,39 +3,28 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Resultado da Busca</title>
+    <title>Lista Ingressos</title>
     <link rel="stylesheet" href="{% static 'reTicket/css/estilo.css' %}">
 </head>
 <body>
-    <h1>Resultado da Busca</h1>
-
-    <table border="1">
-        <tr>
-            <th>Evento</th>
-            <th>Código</th>
-            <th>Data</th>
-            <th>Preço</th>
-        </tr>
-
-        {% for ingresso in resultados %}
-            <tr>
-                <td>{{ ingresso.evento }}</td>
-                <td>{{ ingresso.codigo }}</td>
-                <td>{{ ingresso.dtEvento }}</td>
-                <td>{{ ingresso.preco }}</td>
-            </tr>
-        {% empty %}
-            <tr>
-                <td colspan="4">Nenhum ingresso encontrado</td>
-            </tr>
-        {% endfor %}
-    </table>
-
-    <br>
-    <a href="{% url 'ingressos:busca-ingresso' %}">Nova Busca</a>
-    <br><br>
-    <form action="{% url 'inicial' %}">
-        <input type="submit" value="Voltar para a página inicial">
-    </form>
+    <h1>Lista de Ingressos</h1>
+        <table>
+            <tr><th>Evento</th><th>Código</th><th>Data</th><th>Preço</th></tr>
+            {% for evento in eventos %}
+        	    <tr>
+                    <td>{{ evento.nome }}</td>
+                    <td>{{ evento.codigo }}</td>
+                    <td>{{ evento.dtEvento }}</td>
+                    <td>{{ evento.preco }}</td>
+                    <td><a href="{% url 'ingressos:atualiza-ingresso' pk=evento.id %}">Atualizar</a></td>
+                </tr>
+    	    {% empty %}
+        	    <tr><th colspan= "4" >Ainda não tem ingressos cadastrados</th></tr>
+    	    {% endfor %}
+        </table>
+        <form action="{% url 'inicial' %}">
+            &nbsp;<input type='submit' value='Volte para a página inicial'>
+        </form>
 </body>
 </html>
+
