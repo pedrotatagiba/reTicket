@@ -9,17 +9,23 @@
 <body>
     <h1>Lista de Ingressos</h1>
         <table>
-            <tr><th>Evento</th><th>Código</th><th>Data</th><th>Preço</th></tr>
+            <tr><th>Evento</th><th>Código</th><th>Data</th><th>Preço</th><th>Ações</th></tr> {# Adicione 'Ações' ao cabeçalho #}
             {% for evento in eventos %}
         	    <tr>
                     <td>{{ evento.nome }}</td>
                     <td>{{ evento.codigo }}</td>
                     <td>{{ evento.dtEvento }}</td>
                     <td>{{ evento.preco }}</td>
-                    <td><a href="{% url 'ingressos:atualiza-ingresso' pk=evento.id %}">Atualizar</a></td>
+                    <td>
+                        {% if evento.user == request.user %} {# Adicione esta condição #}
+                            <a href="{% url 'ingressos:atualiza-ingresso' pk=evento.id %}">Atualizar</a>
+                        {% else %}
+                            -
+                        {% endif %} {# Feche a condição #}
+                    </td>
                 </tr>
     	    {% empty %}
-        	    <tr><th colspan= "4" >Ainda não tem ingressos cadastrados</th></tr>
+        	    <tr><th colspan="5">Ainda não tem ingressos cadastrados</th></tr> {# Ajuste o colspan #}
     	    {% endfor %}
         </table>
         <form action="{% url 'inicial' %}">
@@ -27,4 +33,3 @@
         </form>
 </body>
 </html>
-

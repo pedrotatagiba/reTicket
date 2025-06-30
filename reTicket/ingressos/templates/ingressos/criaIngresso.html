@@ -1,0 +1,27 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Criar Anúncio de Ingresso</title>
+    <link rel="stylesheet" href="{% static 'reTicket/css/estilo.css' %}">
+</head>
+<body>
+    <h1>Crie seu Anúncio de Ingresso</h1>
+    <form method="POST" class="formulario">
+      {% csrf_token %}
+      <table>
+        {{ formulario.as_table }}
+          <tr>
+            <td></td>
+            <td><input type="submit" value="Anunciar"></td>
+          </tr>
+      </table>
+    </form>
+    <form action="{% url 'inicial' %}">
+        &nbsp;<input type='submit' value='Voltar para a página inicial'>
+    </form>
+</body>
+</html>

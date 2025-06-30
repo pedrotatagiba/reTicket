@@ -1,38 +1,26 @@
-"""
-URL configuration for reTicket project.
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/5.2/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
-
+# reTicket/reTicket/urls.py
 from django.contrib import admin
-from django.urls import path
-from reTicket import views
-from django.urls.conf import include
+from django.urls import path, include
+from . import views # Mantenha esta linha para as views do projeto reTicket
+from ingressos import views as ingressos_views # Adicione esta linha para importar as views do app ingressos
 
 urlpatterns = [
-    
     path("admin/", admin.site.urls),
-    path('', views.home, name='home'),
-    path('login/',views.login, name='login'),
-    path('inicial/',views.paginaInicial, name='inicial'),
-    path('anuncie_seu_ingresso/',views.anuncieSeuIngresso, name='anuncie'),
-    path('seus_ingressos/',views.seusIngressos, name='ingressos'),
-    path('eventos/',views.pesquiseEventos, name='eventos'),
-    path('acessaIngressos/',views.acessaIngressos , name='acessaIngressos'),
-    path('accounts/', include('django.contrib.auth.urls')),
+    path("", views.home, name="root"),
+    path("home/", views.home, name="home"),
+    path("login/", views.login, name="login"),
+    path("inicial/", views.paginaInicial, name="inicial"),
 
-    path('ingressos/',include('ingressos.urls'))
+    # --- Ajustes nas URLs de Anunciar e Meus Ingressos ---
+    # Aponte 'anuncie_seu_ingresso/' diretamente para a view de criação de ingresso
+    path("anuncie_seu_ingresso/", ingressos_views.criarIngresso, name="anuncie"),
+    # Aponte 'seus_ingressos/' diretamente para a view de listagem dos ingressos do usuário
+    path("seus_ingressos/", ingressos_views.MeusIngressosListView.as_view(), name="meus-ingressos-do-projeto"), # Dê um nome diferente para evitar conflito com 'ingressos'
+                                                                                                                   # ou remova o 'name="ingressos"' anterior se não for mais usado
+    # --- Mantenha esta linha para incluir as outras URLs do app ingressos (lista, busca, atualiza)
+    path('ingressos/', include('ingressos.urls')),
+
+    path("eventos/", views.pesquiseEventos, name="eventos"),
+    path("acessaIngressos/", views.acessaIngressos, name="acessaIngressos"),
+    path("accounts/", include('django.contrib.auth.urls')),
 ]
-
-

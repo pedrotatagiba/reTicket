@@ -13,11 +13,11 @@
 
 <body>
     <h1>Página Inicial</h1>
-    <form action="{% url 'anuncie' %}">
+    <form action="{% url 'anuncie' %}"> {# Use o nome da URL que você definiu no reTicket.urls #}
             &nbsp;<input type='submit' value='Anuncie seu ingresso'>
         </form>
         
-    <form action="{% url 'ingressos' %}">
+    <form action="{% url 'meus-ingressos-do-projeto' %}"> {# Use o nome da URL que você definiu no reTicket.urls #}
             &nbsp;<input type='submit' value='Seus ingressos'>
         </form>
 
