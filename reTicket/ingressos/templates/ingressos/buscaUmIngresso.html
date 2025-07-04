@@ -1,20 +1,45 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Busca um ingresso</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Busca de Ingressos - ReTicket</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+
+    <style>
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
 </head>
-<body class="text-primary-emphasis text-center">
-   <h1>Busca de ingressos</h1>
-   <form action="{% url 'ingressos:mostra-ingresso' %}" method="get">
-       Nome: <input type="text" name="nome" id="nome">
-       <button type="submit">Busca</button>
-   </form>
-   <form class="p-2" action="{% url 'inicial' %}">
-            <input type='submit' value='Página inicial'>
-        </form>
+
+<body class="text-primary-emphasis">
+    <div class="container mt-5"> {# Contêiner Bootstrap para espaçamento e limitação de largura #}
+        <div class="card p-4 mx-auto" style="max-width: 500px;"> {# O QUADRO (CARD) centralizado #}
+            <h1 class="text-primary-emphasis text-center mb-4">Busca de Ingressos</h1>
+
+            <form action="{% url 'ingressos:mostra-ingresso' %}" method="get" class="mb-3">
+                <div class="mb-3"> {# Grupo de formulário para o campo de busca #}
+                    <label for="nome" class="form-label visually-hidden">Nome do Evento</label> {# Rótulo escondido para melhor acessibilidade #}
+                    <input type="text" name="nome" id="nome" class="form-control" placeholder="Digite o nome do evento">
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Buscar</button>
+            </form>
+
+            <hr class="my-4"> {# Linha divisória #}
+
+            <form action="{% url 'inicial' %}" class="text-center"> {# Formulário para voltar à página inicial #}
+                <input type='submit' value='Página inicial' class="btn btn-outline-secondary w-100">
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>

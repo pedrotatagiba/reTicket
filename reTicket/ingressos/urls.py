@@ -12,8 +12,6 @@ urlpatterns = [
   path('', views.IngressoListView.as_view(), name='home-ingressos'),
   path('busca/', views.buscaUmIngresso, name='busca-ingresso'),
   path('retorno-busca/', views.respostaBuscaUmIngresso, name='mostra-ingresso'),
-
-  # --- Novas URLs para o requisito ---
   path('criar/', views.criarIngresso, name='criar-ingresso'), # Para criar um novo ingresso
   path('meus-ingressos/', views.MeusIngressosListView.as_view(), name='meus-ingressos'), # Para listar ingressos do usuário
 

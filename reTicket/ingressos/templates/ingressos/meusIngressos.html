@@ -3,29 +3,68 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Meus Ingressos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Meus Ingressos - ReTicket</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+
+    <style>
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        /* Estilos adicionais para a tabela dentro do card */
+        .table-responsive {
+            margin-top: 1.5rem; /* Espaçamento acima da tabela */
+        }
+    </style>
 </head>
-<body class="text-primary-emphasis text-center">
-    <h1 class="text-center">Meus Ingressos:</h1>
-        <table>
-            <tr><th>Evento</th><th>Código</th><th>Data</th><th>Preço</th><th>Ações</th></tr>
-            {% for evento in eventos %}
-        	    <tr>
-                    <td>{{ evento.nome }}</td>
-                    <td>{{ evento.codigo }}</td>
-                    <td>{{ evento.dtEvento }}</td>
-                    <td>{{ evento.preco }}</td>
-                    <td>
-                        <a href="{% url 'ingressos:atualiza-ingresso' pk=evento.id %}">Editar</a>
-                    </td>
-                </tr>
-    	    {% empty %}
-        	    <tr><th colspan="5">Você ainda não tem ingressos cadastrados.</th></tr>
-    	    {% endfor %}
-        </table>
-        <form action="{% url 'inicial' %}">
-            <input type='submit' value='Página inicial'>
-        </form>
+<body class="text-primary-emphasis">
+    <div class="container mt-5"> {# Contêiner Bootstrap para espaçamento e limitação de largura #}
+        <div class="card p-4 mx-auto" style="max-width: 800px;"> {# O QUADRO (CARD) centralizado #}
+            <h1 class="text-primary-emphasis text-center mb-4">Meus Ingressos</h1>
+
+            {% if eventos %} {# Só exibe a tabela se houver ingressos do usuário #}
+                <div class="table-responsive"> {# Garante que a tabela seja responsiva em telas pequenas #}
+                    <table class="table table-striped table-hover align-middle"> {# Classes Bootstrap para tabela #}
+                        <thead class="table-light"> {# Cabeçalho da tabela #}
+                            <tr>
+                                <th scope="col">Evento</th>
+                                <th scope="col">Código</th>
+                                <th scope="col">Data</th>
+                                <th scope="col">Preço</th>
+                                <th scope="col">Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for evento in eventos %}
+                                <tr>
+                                    <td>{{ evento.nome }}</td>
+                                    <td>{{ evento.codigo }}</td>
+                                    <td>{{ evento.dtEvento }}</td>
+                                    <td>{{ evento.preco }}</td>
+                                    <td>
+                                        <a href="{% url 'ingressos:atualiza-ingresso' pk=evento.id %}" class="btn btn-sm btn-info text-white">Editar</a> {# Botão Bootstrap #}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% else %}
+                <p class="lead text-center mt-3">Você ainda não tem ingressos cadastrados.</p> {# Mensagem quando não há ingressos #}
+            {% endif %}
+
+            <hr class="my-4"> {# Linha divisória #}
+
+            <form action="{% url 'inicial' %}" class="text-center"> {# Centraliza o formulário do botão #}
+                <input type='submit' value='Página inicial' class="btn btn-outline-secondary w-100">
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>

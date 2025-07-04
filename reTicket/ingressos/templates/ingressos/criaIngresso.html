@@ -5,23 +5,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Criar Anúncio de Ingresso</title>
+    <title> ReTicket - Criar Anúncio </title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+
+    <style>
+        body {
+            min-height: 100vh; /* Garante que o body ocupe a altura total da viewport */
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Centraliza o conteúdo verticalmente */
+            align-items: center; /* Centraliza o conteúdo horizontalmente */
+        }
+    </style>
 </head>
-<body class="text-primary-emphasis text-center">
-    <h1 class="text-primary-emphasis text-center">Crie seu Anúncio</h1>
-    <form method="POST" class="formulario text-center">
-      {% csrf_token %}
-      <table class="text-center">
-        {{ formulario.as_table }}
-          <tr>
-            <td></td>
-            <td><input type="submit" value="Anunciar"></td>
-          </tr>
-      </table>
-    </form>
-    <form action="{% url 'inicial' %}">
-        <input type='submit' value='Página inicial'>
-    </form>
+
+<body class="text-primary-emphasis">
+    <div class="container mt-5"> {# Contêiner Bootstrap para espaçamento e limitação de largura #}
+        <div class="card p-4 mx-auto" style="max-width: 600px;"> {# O QUADRO (CARD) centralizado #}
+            <h1 class="text-primary-emphasis text-center mb-4">Crie seu Anúncio</h1>
+
+            <form method="post" action="{% url 'ingressos:criar-ingresso' %}">
+                {% csrf_token %} {# Token de segurança do Django (essencial para formulários POST) #}
+
+                {# Loop para renderizar CADA CAMPO do seu formulário Django com estilo Bootstrap #}
+                {% for field in formulario %} {# ***AQUI ESTÁ A CORREÇÃO: 'form' MUDOU PARA 'formulario'*** #}
+                    <div class="mb-3"> {# Margem inferior para espaçar cada campo #}
+                        <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
+                        {{ field }} {# Aqui o campo do formulário (input, textarea, etc.) será renderizado #}
+                        {% if field.help_text %}
+                            <div class="form-text">{{ field.help_text }}</div> {# Exibe texto de ajuda, se houver #}
+                        {% endif %}
+                        {% for error in field.errors %}
+                            <div class="text-danger">{{ error }}</div> {# Exibe erros de validação do campo #}
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+
+                <button type="submit" class="btn btn-primary w-100 mt-3">Publicar Anúncio</button>
+            </form>
+
+            <hr class="my-4"> {# Linha divisória #}
+
+            <form action="{% url 'inicial' %}"> {# Formulário para voltar à página inicial #}
+                <input type='submit' value='Voltar para a página inicial' class="btn btn-outline-secondary w-100">
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
