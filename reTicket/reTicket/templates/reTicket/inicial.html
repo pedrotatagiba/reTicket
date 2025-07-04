@@ -34,17 +34,13 @@
                         <li class="nav-item"><a class="nav-link text-primary-emphasis" href="{% url 'anuncie' %}">Anuncie</a></li>
                         <li class="nav-item text-primary-emphasis"><a class="nav-link text-primary-emphasis" href="{% url 'meus-ingressos-do-projeto' %}">Meus Ingressos</a></li>
                         <li class="nav-item"><a class="nav-link text-primary-emphasis" href="{% url 'eventos' %}">Pesquise Eventos</a></li>
-                        <li class="nav-item"><a class="nav-link text-primary-emphasis" href="https://www.instagram.com/joao.luiscastro/">Instagram</a></li>
-
-                        {# --- AQUI ESTÁ A MUDANÇA PARA O BOTÃO SAIR NA NAVBAR --- #}
+                        <li class="nav-item"><a class="nav-link text-primary-emphasis" href="https://www.instagram.com/reticket_/?utm_source=ig_web_button_share_sheet">Instagram</a></li>
                         <li class="nav-item text-primary-emphasis">
-                            <form action="{% url 'logout' %}" method="post" class="d-inline"> {# Adicione d-inline para manter o estilo de link na navbar #}
+                            <form action="{% url 'logout' %}" method="post" class="d-inline"> 
                                 {% csrf_token %}
                                 <button type="submit" class="nav-link btn btn-link text-primary-emphasis" style="background: none; border: none; padding: .5rem 1rem; cursor: pointer;">Sair</button>
                             </form>
                         </li>
-                        {# --- FIM DA MUDANÇA --- #}
-
                         <li class="nav-item text-primary-emphasis"><a class="nav-link" href="#" aria-label="Cart"> <svg class="bi" width="24" height="24" aria-hidden="true"><use xlink:href="#cart"></use></svg> </a></li>
                     </ul>
                 </div>
@@ -52,10 +48,8 @@
         </div>
     </nav>
 
-    <h1 class="text-center bold fs-1 p-2">     </h1>
-
-    <div class="text-center p-2">
-        <img src="https://lh7-rt.googleusercontent.com/slidesz/AGV_vUcmqAzdZaDznZXAldDxy7Cqpw0XjQSockzwKdx7XK74xQTnZib0d7B1QnyNAtmN69SC9tnQzSTVaknyhm9ThHkJfSV8vIpZi2q5_BlTeu2OIw0DVYdJvd4sa9SvNcupq5OeDr6P3A=w320-h320?key=D4Yt7mty8KaYiSL1FWknluRw" class="img-fluid" alt="">
+    <div class="card text-bg-dark">
+        <img src="https://blogger.googleusercontent.com/img/a/AVvXsEgnsPcaZztXGHuaJrwgjfnkshvqUB_93X3PHtRFhD528z_fen0ceJO_QKn7uS-TPJOI4-Q4haidsBaqnMc9xcRDc74GITtR0ZSg1cB9q22tuRdxGbOY14mcoNIVtkTmSqP8k6FGP5hKi-FdFDktSzkX4AayipYHrXfcjfZ-GILRACpE8rnJV7qvSYW1572D" class="img-fluid" alt="">
     </div>
 
 </body>
