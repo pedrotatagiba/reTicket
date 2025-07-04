@@ -20,24 +20,21 @@
 </head>
 
 <body class="text-primary-emphasis">
-    <div class="container mt-5"> {# Contêiner Bootstrap para espaçamento e limitação de largura #}
-        <div class="card p-4 mx-auto" style="max-width: 600px;"> {# O QUADRO (CARD) centralizado #}
+    <div class="container mt-5"> 
+        <div class="card p-4 mx-auto" style="max-width: 600px;">
             <h1 class="text-primary-emphasis text-center mb-4">Atualização de Ingressos</h1>
 
-            <form method="POST"> {# Removido class='formulario' que não era Bootstrap #}
+            <form method="POST">
               {% csrf_token %}
-
-              {# Loop para renderizar CADA CAMPO do seu formulário Django com estilo Bootstrap #}
-              {# Sua view está passando o formulário como 'evento'. Se for 'formulario', mude aqui. #}
               {% for field in evento %}
-                  <div class="mb-3"> {# Margem inferior para espaçar cada campo #}
+                  <div class="mb-3"> 
                       <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
-                      {{ field }} {# Aqui o campo do formulário (input, textarea, etc.) será renderizado #}
+                      {{ field }}
                       {% if field.help_text %}
-                          <div class="form-text">{{ field.help_text }}</div> {# Exibe texto de ajuda, se houver #}
+                          <div class="form-text">{{ field.help_text }}</div>
                       {% endif %}
                       {% for error in field.errors %}
-                          <div class="text-danger">{{ error }}</div> {# Exibe erros de validação do campo #}
+                          <div class="text-danger">{{ error }}</div>
                       {% endfor %}
                   </div>
               {% endfor %}
@@ -45,9 +42,9 @@
               <button type="submit" class="btn btn-primary w-100 mt-3">Atualizar Ingresso</button>
             </form>
 
-            <hr class="my-4"> {# Linha divisória #}
+            <hr class="my-4">
 
-            <form action="{% url 'inicial' %}"> {# Formulário para voltar à página inicial #}
+            <form action="{% url 'inicial' %}">
                 <input type='submit' value='Voltar para a página inicial' class="btn btn-outline-secondary w-100">
             </form>
         </div>
