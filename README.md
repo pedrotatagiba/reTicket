@@ -17,7 +17,7 @@ A **reTicket** é uma plataforma online desenvolvida para simplificar e securiza
 
 ### Principais Funcionalidades:
 
-* **Página de Login/Cadastro**: Ao acessar a plataforma, os usuários serão direcionados para uma página de login ou para criar uma nova conta.
+* **Página de Login/Cadastro**: Ao acessar a plataforma, os usuários serão direcionados para uma página de login ou para criar uma nova conta (Conta teste -> usuário: teste ; senha: reTicket123).
     ![Página de Login](Login.png)
 
 * **Página Inicial**: Ao acessar a plataforma com os dados de login, os usuário são direcionados para a página inicial.
